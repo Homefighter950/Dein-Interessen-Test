@@ -1,39 +1,67 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const sqlite3 = require("sqlite3").verbose();
-const path = require("path");
+require('dotenv').config();
+const express = require('express');
+const mysql = require('mysql2');
+const bodyParser = require('body-parser');
+const path = require('path');
 
 const app = express();
-const db = new sqlite3.Database("./quiz.db");
-
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, "public"))); // index.html in /public
+app.use(express.static(path.join(__dirname, 'public')));
 
-// Tabelle erstellen falls nicht existiert
-db.run(`
-  CREATE TABLE IF NOT EXISTS results (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    vorname TEXT NOT NULL,
-    nachname TEXT,
-    klasse TEXT NOT NULL,
-    ergebnis TEXT NOT NULL,
-    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
-  )
-`);
+// MySQL Verbindung
+const db = mysql.createPool({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0
+});
 
-app.post("/submit", (req, res) => {
-  const { vorname, nachname, klasse, ergebnis } = req.body;
-  if (!vorname || !klasse || !ergebnis) {
-    return res.status(400).send("Pflichtfelder fehlen");
+// Tabelle erstellen, falls sie noch nicht existiert
+const createTableQuery = `
+CREATE TABLE IF NOT EXISTS ergebnisse (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  vorname VARCHAR(100) NOT NULL,
+  nachname VARCHAR(100),
+  klasse VARCHAR(10) NOT NULL,
+  ergebnis VARCHAR(255) NOT NULL,
+  zeit TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)
+`;
+
+db.query(createTableQuery, (err) => {
+  if (err) {
+    console.error("Fehler beim Erstellen der Tabelle:", err);
+  } else {
+    console.log("Tabelle 'ergebnisse' ist bereit.");
   }
-  db.run(
-    "INSERT INTO results (vorname, nachname, klasse, ergebnis) VALUES (?, ?, ?, ?)",
-    [vorname, nachname, klasse, ergebnis],
-    (err) => {
-      if (err) return res.status(500).send("Fehler beim Speichern");
-      res.send("Gespeichert");
+});
+
+// POST /submit
+app.post('/submit', (req, res) => {
+  const { vorname, nachname, klasse, ergebnis } = req.body;
+  console.log("Empfangene Daten:", req.body); // Debug
+
+  if (!vorname || !klasse || !ergebnis) {
+    return res.status(400).send("Fehlende Pflichtdaten");
+  }
+
+  db.query(
+    'INSERT INTO ergebnisse (vorname, nachname, klasse, ergebnis) VALUES (?, ?, ?, ?)',
+    [vorname, nachname || null, klasse, ergebnis],
+    (err, results) => {
+      if (err) {
+        console.error("DB Insert Fehler:", err);
+        return res.status(500).send('DB Error');
+      }
+      console.log("Daten erfolgreich eingefügt:", results.insertId);
+      res.send('OK');
     }
   );
 });
 
-app.listen(3000, () => console.log("Server läuft auf http://localhost:3000"));
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server läuft auf Port ${PORT}`));

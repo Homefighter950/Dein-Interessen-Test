@@ -5,17 +5,15 @@ form.addEventListener("submit", async (e) => {
   e.preventDefault();
   const data = new FormData(form);
 
-  // Zähle Antworten
+  // --- Auswertung ---
   const counts = { a: 0, b: 0, c: 0, d: 0, e: 0 };
   for (let i = 1; i <= 10; i++) {
     const val = data.get("q" + i);
     if (val) counts[val]++;
   }
 
-  // Bestimme Gewinner
   let winner = Object.keys(counts).reduce((a, b) => counts[a] >= counts[b] ? a : b);
 
-  // Beruf zuordnen
   const berufe = {
     a: "Kaufleute für Büromanagement",
     b: "Kaufleute im Gesundheitswesen",
@@ -25,10 +23,8 @@ form.addEventListener("submit", async (e) => {
   };
   const beruf = berufe[winner];
 
-  // Icons für Übersicht
   const icons = { a: "🗂", b: "❤️", c: "🌍", d: "💪", e: "🏛" };
 
-  // Zusammenfassung hübsch darstellen
   const summary = `
     <ul class="result-list">
       ${Object.keys(counts)
@@ -41,7 +37,6 @@ form.addEventListener("submit", async (e) => {
     </ul>
   `;
 
-  // Ergebnis anzeigen
   resultDiv.classList.remove("hidden");
   resultDiv.innerHTML = `
     <h2>📊 Dein Ergebnis</h2>
@@ -49,7 +44,7 @@ form.addEventListener("submit", async (e) => {
     ${summary}
   `;
 
-  // An Server senden
+  // --- Payload an Server ---
   const payload = {
     vorname: data.get("vorname"),
     nachname: data.get("nachname"),
@@ -57,9 +52,24 @@ form.addEventListener("submit", async (e) => {
     ergebnis: beruf
   };
 
-  await fetch("/submit", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload)
-  });
+  console.log("Sende Payload:", payload); // DEBUG Browser
+
+  try {
+    const res = await fetch("/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+
+    const text = await res.text();
+    console.log("Server-Antwort:", text);
+
+    if (!res.ok) {
+      console.error("Fehler beim Speichern:", text);
+    } else {
+      console.log("Daten erfolgreich gespeichert!");
+    }
+  } catch (err) {
+    console.error("Fetch-Fehler:", err);
+  }
 });
