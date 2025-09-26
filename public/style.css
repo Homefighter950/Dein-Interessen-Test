@@ -3,11 +3,12 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-family: "Roboto Flex", sans-serif;
+  font-weight:  Regular 400;
 }
 
 body {
-  background: linear-gradient(135deg, #18a576, #ff4e50);
+  background: linear-gradient(135deg, #3091e6, #9b7ce4, #ff4e50);
   color: #333;
   padding: 20px;
   line-height: 1.5;
@@ -35,6 +36,11 @@ h1 {
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   transition: transform 0.2s, box-shadow 0.2s;
 }
+question-box, .card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
 
 .question-box:hover, .card:hover {
   transform: translateY(-2px);
@@ -42,8 +48,8 @@ h1 {
 }
 
 legend {
-  font-weight: bold;
-  font-size: 1.2em;
+  font-weight: Medium 500;
+  font-size: 1 em;
   color: #5c0a0a;
 }
 
@@ -85,13 +91,14 @@ label {
 button, .btn {
   display: inline-block;
   margin-top: 20px;
-  background: #4285f4;
+  background: linear-gradient(135deg, #0d7ee0, #d13382);
   color: #fff;
   font-size: 1.2em;
   font-weight: bold;
   padding: 12px 24px;
-  border: none;
+  border: 0.5px solid #8a6478;
   border-radius: 12px;
+   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   cursor: pointer;
   transition: background 0.3s ease, transform 0.2s;
 }
@@ -136,6 +143,14 @@ button:hover, .btn:hover {
   font-size: 1.3em;
   display: inline-block;
   animation: pop 0.3s ease-out;
+}
+/* Trenner */
+.divider {
+  border: none;
+  height: 1px;
+  background: linear-gradient(to right, #aaa, #aaa, #aaa);
+  opacity: 0.25;  
+  margin: 1.5em 0;
 }
 
 /* Antwortmöglichkeiten */
@@ -203,7 +218,7 @@ button:hover, .btn:hover {
 }
 
 /* Mobile Optimierung */
-@media (max-width: 600px) {
+@media (max-width: 860px) {
   body {
     font-size: 16px;
     padding: 10px;
@@ -211,10 +226,12 @@ button:hover, .btn:hover {
 
   .container {
     padding: 10px;
+    max-width: 860px;
+    margin: auto;
   }
 
   h1 {
-    font-size: 22px;
+    font-size: 29px;
   }
 
   .question-box, .card {
