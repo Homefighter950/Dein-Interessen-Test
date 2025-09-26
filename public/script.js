@@ -5,15 +5,17 @@ form.addEventListener("submit", async (e) => {
   e.preventDefault();
   const data = new FormData(form);
 
-  // --- Auswertung ---
+  // Antworten zählen
   const counts = { a: 0, b: 0, c: 0, d: 0, e: 0 };
   for (let i = 1; i <= 10; i++) {
     const val = data.get("q" + i);
     if (val) counts[val]++;
   }
 
+  // Gewinner bestimmen
   let winner = Object.keys(counts).reduce((a, b) => counts[a] >= counts[b] ? a : b);
 
+  // Berufszuordnung
   const berufe = {
     a: "Kaufleute für Büromanagement",
     b: "Kaufleute im Gesundheitswesen",
@@ -23,8 +25,10 @@ form.addEventListener("submit", async (e) => {
   };
   const beruf = berufe[winner];
 
+  // Icons
   const icons = { a: "🗂", b: "❤️", c: "🌍", d: "💪", e: "🏛" };
 
+  // Zusammenfassung HTML
   const summary = `
     <ul class="result-list">
       ${Object.keys(counts)
@@ -37,14 +41,16 @@ form.addEventListener("submit", async (e) => {
     </ul>
   `;
 
+  // Ergebnis sofort anzeigen
   resultDiv.classList.remove("hidden");
+  resultDiv.classList.add("visible"); // für Animation
   resultDiv.innerHTML = `
     <h2>📊 Dein Ergebnis</h2>
     <p>Am besten passt zu dir: <strong>${beruf}</strong> ${icons[winner]} ⭐</p>
     ${summary}
   `;
 
-  // --- Payload an Server ---
+  // Payload für Server
   const payload = {
     vorname: data.get("vorname"),
     nachname: data.get("nachname"),
@@ -52,24 +58,19 @@ form.addEventListener("submit", async (e) => {
     ergebnis: beruf
   };
 
-  console.log("Sende Payload:", payload); // DEBUG Browser
-
-  try {
-    const res = await fetch("/submit", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
-    });
-
-    const text = await res.text();
-    console.log("Server-Antwort:", text);
-
-    if (!res.ok) {
-      console.error("Fehler beim Speichern:", text);
-    } else {
-      console.log("Daten erfolgreich gespeichert!");
-    }
-  } catch (err) {
-    console.error("Fetch-Fehler:", err);
-  }
+  // POST an Server (optional)
+  fetch("/submit", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  })
+    .then(async res => {
+      if (!res.ok) {
+        const text = await res.text();
+        console.error("Fehler beim Speichern:", text);
+      } else {
+        console.log("Daten erfolgreich gespeichert!");
+      }
+    })
+    .catch(err => console.warn("Fetch-Error (lokal ignorierbar):", err));
 });

@@ -1,14 +1,21 @@
-body {
-  font-family: "Comic Sans MS", cursive, sans-serif;
-  background: linear-gradient(135deg, #18a576, #ff4e50);
-  color: #333;
+/* Grundlayout */
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #18a576, #ff4e50);
+  color: #333;
+  padding: 20px;
+  line-height: 1.5;
 }
 
 .container {
   max-width: 800px;
-  margin: 0 auto;
+  margin: auto;
   padding: 20px;
 }
 
@@ -19,12 +26,19 @@ h1 {
   text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
-.card {
+/* Karten / Frageboxen */
+.question-box, .card {
   background: #fff;
   border-radius: 16px;
   padding: 20px;
   margin-bottom: 20px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.question-box:hover, .card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
 }
 
 legend {
@@ -36,9 +50,39 @@ legend {
 label {
   display: block;
   margin-bottom: 6px;
+  font-weight: bold;
+  color: #444;
 }
 
-.btn {
+/* Eingabefelder */
+.input-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group input, .input-group select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 2px solid #ddd;
+  font-size: 1em;
+  transition: all 0.3s ease-in-out;
+  width: 100%;
+}
+
+.input-group input:focus, .input-group select:focus {
+  border-color: #ff4e50;
+  outline: none;
+  box-shadow: 0 0 8px rgba(255,78,80,0.5);
+}
+
+.input-group .required {
+  color: red;
+  margin-left: 4px;
+}
+
+/* Buttons */
+button, .btn {
   display: inline-block;
   margin-top: 20px;
   background: #4285f4;
@@ -49,19 +93,29 @@ label {
   border: none;
   border-radius: 12px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.2s;
 }
 
-.btn:hover {
+button:hover, .btn:hover {
   background: #3367d6;
+  transform: scale(1.05);
 }
 
+/* Ergebnisbereich */
 #result {
-  margin-top: 30px; /* Abstand zum Button */
+  margin-top: 30px;
   padding: 20px;
   background: #fefefe;
   border: 2px solid #ddd;
   border-radius: 12px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+#result.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .result-list {
@@ -80,38 +134,106 @@ label {
 .result-list li span.icon {
   margin-right: 8px;
   font-size: 1.3em;
+  display: inline-block;
+  animation: pop 0.3s ease-out;
 }
 
-.hidden {
-  display: none;
-}
-
-.input-group {
-  margin-bottom: 15px;
+/* Antwortmöglichkeiten */
+.options {
   display: flex;
   flex-direction: column;
+  gap: 10px;
+  margin-top: 12px;
 }
 
-.input-group label {
-  font-weight: bold;
-  margin-bottom: 5px;
-  color: #444;
+.options label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: #fafafa;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background 0.3s, border-color 0.3s, transform 0.2s, box-shadow 0.2s;
 }
 
-.input-group .required {
-  color: red;
+/* Hover-Animation */
+.options label:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  background: #e0f7fa;
+  border-color: #2e7d32;
 }
 
-.input-group input {
-  padding: 10px;
-  border-radius: 8px;
-  border: 2px solid #ddd;
-  font-size: 1em;
-  transition: all 0.2s ease-in-out;
+/* Radio-Button Auswahlanimation */
+.options input[type="radio"] {
+  transform: scale(1.4);
+  accent-color: #2e7d32;
+  cursor: pointer;
 }
 
-.input-group input:focus {
-  border-color: #ff4e50;
-  outline: none;
-  box-shadow: 0 0 6px rgba(255, 78, 80, 0.5);
+.options input[type="radio"]:checked + span {
+  animation: selected 0.3s ease-out forwards;
+}
+
+@keyframes selected {
+  0% { transform: scale(1); background-color: transparent; }
+  50% { transform: scale(1.15); background-color: #c8e6c9; }
+  100% { transform: scale(1.05); background-color: #e0f7fa; }
+}
+
+/* Emoji Pop-Animation */
+.options label span.icon {
+  display: inline-block;
+  transition: transform 0.2s, filter 0.2s;
+}
+
+.options label:hover span.icon {
+  transform: rotate(-10deg) scale(1.2);
+  filter: drop-shadow(0 0 4px #2e7d32);
+}
+
+/* Emoji Ergebnis Pop */
+@keyframes pop {
+  0% { transform: scale(0); }
+  70% { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+
+/* Mobile Optimierung */
+@media (max-width: 600px) {
+  body {
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  .question-box, .card {
+    padding: 15px;
+  }
+
+  .options label {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  button, .btn {
+    width: 100%;
+    font-size: 18px;
+    padding: 16px;
+  }
+
+  input, select {
+    font-size: 16px;
+    padding: 12px;
+  }
 }
