@@ -62,6 +62,5 @@ app.post('/submit', (req, res) => {
   );
 });
 
-
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.WEBPORT;
 app.listen(PORT, () => console.log(`Server läuft auf Port ${PORT}`));
