@@ -1,0 +1,117 @@
+body {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  background: linear-gradient(135deg, #18a576, #ff4e50);
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+legend {
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #5c0a0a;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 20px;
+  background: #4285f4;
+  color: #fff;
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background: #3367d6;
+}
+
+#result {
+  margin-top: 30px; /* Abstand zum Button */
+  padding: 20px;
+  background: #fefefe;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+}
+
+.result-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 15px;
+}
+
+.result-list li {
+  font-size: 1.1em;
+  margin: 6px 0;
+  display: flex;
+  align-items: center;
+}
+
+.result-list li span.icon {
+  margin-right: 8px;
+  font-size: 1.3em;
+}
+
+.hidden {
+  display: none;
+}
+
+.input-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #444;
+}
+
+.input-group .required {
+  color: red;
+}
+
+.input-group input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 2px solid #ddd;
+  font-size: 1em;
+  transition: all 0.2s ease-in-out;
+}
+
+.input-group input:focus {
+  border-color: #ff4e50;
+  outline: none;
+  box-shadow: 0 0 6px rgba(255, 78, 80, 0.5);
+}
