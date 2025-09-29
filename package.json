@@ -1,4 +1,9 @@
 {
+    "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+
   "dependencies": {
     "body-parser": "^2.2.0",
     "dotenv": "^17.2.2",
