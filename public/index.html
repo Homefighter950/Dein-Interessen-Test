@@ -8,7 +8,19 @@
 </head>
 <body>
   <div class="container">
-    <h1>✨ Dein Interessen-Test ✨</h1>
+    <header class="page-header">
+      <div class="theme-switcher">
+        <label for="theme-toggle" class="switch-label">
+          <span class="sun-icon">☀️</span>
+          <div class="switch">
+            <input type="checkbox" id="theme-toggle">
+            <span class="slider round"></span>
+          </div>
+          <span class="moon-icon">👦</span>
+        </label>
+      </div>
+      <h1>✨ Dein Interessen-Test ✨</h1>
+    </header>
     <form id="quizForm">
       <fieldset class="card">
         <h2>👤 Persönliche Daten</h2>
@@ -46,97 +58,97 @@
 
         <h3>2. Wie stellst du dir deinen Arbeitsplatz vor?</h3>
         <br>
-        <label><input type="radio" name="q2" value="a" required> a) am Schreibtisch, organisiert mit Check-Listen und Tabellen.</label><br>
-        <label><input type="radio" name="q2" value="b"> b) im Büro, am Computer (mit Excel).</label><br>
-        <label><input type="radio" name="q2" value="c"> c) im Austausch mit Kunden und Warentransport aus aller Welt.</label><br>
-        <label><input type="radio" name="q2" value="d"> d) zwischen Schreibtisch und Sporthalle, Kontakt mit Sportler/innen.</label><br>
-        <label><input type="radio" name="q2" value="e"> e) sauber und ordentlich, flexibel und mobil mit Kundenorientierung.</label><br>
-        <label><input type="radio" name="q2" value="f"> f) in einem Büro, in einer Bank, ordentlich und sauber.</label><br>
-        <label><input type="radio" name="q2" value="g"> g) flexibel am Computer mit viel Teamarbeit.</label>
+        <label><input type="radio" name="q2" value="a" required> a) Am Schreibtisch, organisiert mit Check-Listen und Tabellen 🗂️</label><br>
+        <label><input type="radio" name="q2" value="b"> b) Im Büro, am Computer (mit Excel) 🏭</label><br>
+        <label><input type="radio" name="q2" value="c"> c) Im Austausch mit Kunden und Warentransport aus aller Welt 🚚</label><br>
+        <label><input type="radio" name="q2" value="d"> d) Zwischen Schreibtisch und Sporthalle, Kontakt mit Sportler/innen 🏋️‍♀️</label><br>
+        <label><input type="radio" name="q2" value="e"> e) Sauber und ordentlich, flexibel und mobil mit Kundenorientierung 🛍️</label><br>
+        <label><input type="radio" name="q2" value="f"> f) In einem Büro, in einer Bank, ordentlich und sauber 🏦</label><br>
+        <label><input type="radio" name="q2" value="g"> g) Flexibel am Computer mit viel Teamarbeit 🎉</label>
 
 <hr class="divider">
 
         <h3>3. Was motiviert dich am meisten?</h3>
         <br>
-        <label><input type="radio" name="q3" value="a" required> a) wenn alles reibungslos läuft und gut geplant ist.</label><br>
-        <label><input type="radio" name="q3" value="b"> b) wenn Prozesse koordiniert, strukturiert und planungsgemäß ablaufen.</label><br>
-        <label><input type="radio" name="q3" value="c"> c) den Durchblick zu geplanten Treffen und Zielen habe.</label><br>
-        <label><input type="radio" name="q3" value="d"> d) Menschen beim Sport und bei ihren Zielen unterstützen.</label><br>
-        <label><input type="radio" name="q3" value="e"> e) Kundenkontakt mit praktischer Arbeit.</label><br>
-        <label><input type="radio" name="q3" value="f"> f) Finanzen und vielfältige Aufgaben.</label><br>
-        <label><input type="radio" name="q3" value="g"> g) etwas Kreatives in einem Team organisieren.</label>
+        <label><input type="radio" name="q3" value="a" required> a) Wenn alles reibungslos läuft und gut geplant ist 🗂️</label><br>
+        <label><input type="radio" name="q3" value="b"> b) Wenn Prozesse koordiniert, strukturiert und planungsgemäß ablaufen 🏭</label><br>
+        <label><input type="radio" name="q3" value="c"> c) Den Durchblick zu geplanten Treffen und Zielen habe 🚚</label><br>
+        <label><input type="radio" name="q3" value="d"> d) Menschen beim Sport und bei ihren Zielen unterstützen 🏋️‍♀️</label><br>
+        <label><input type="radio" name="q3" value="e"> e) Kundenkontakt mit praktischer Arbeit 🛍️</label><br>
+        <label><input type="radio" name="q3" value="f"> f) Finanzen und vielfältige Aufgaben 🏦</label><br>
+        <label><input type="radio" name="q3" value="g"> g) Etwas Kreatives in einem Team organisieren 🎉</label>
 
 <hr class="divider">
 
         <h3>4. Was gefällt dir an Teamarbeit am besten?</h3>
         <br>
-        <label><input type="radio" name="q4" value="a" required> a) Aufgaben fair verteilen und zusammen arbeiten.</label><br>
-        <label><input type="radio" name="q4" value="b"> b) Austausch mit Kollegen/innen und Lieferanten - freundlich und klar.</label><br>
-        <label><input type="radio" name="q4" value="c"> c) schnelle Absprachen, damit alles klappt.</label><br>
-        <label><input type="radio" name="q4" value="d"> d) gemeinsam trainieren und Spaß haben.</label><br>
-        <label><input type="radio" name="q4" value="e"> e) Es funktioniert nur gut, wenn alle zusammenarbeiten.</label><br>
-        <label><input type="radio" name="q4" value="f"> f) klare Absprache für Termine, Aufgaben und Verantwortlichkeiten.</label><br>
-        <label><input type="radio" name="q4" value="g"> g) Events können nur gemeinsam erfolgreich umgesetzt werden.</label>
+        <label><input type="radio" name="q4" value="a" required> a) Aufgaben fair verteilen und zusammen arbeiten 🗂️</label><br>
+        <label><input type="radio" name="q4" value="b"> b) Austausch mit Kollegen/innen und Lieferanten - freundlich und klar 🏭</label><br>
+        <label><input type="radio" name="q4" value="c"> c) Schnelle Absprachen, damit alles klappt 🚚</label><br>
+        <label><input type="radio" name="q4" value="d"> d) Gemeinsam trainieren und Spaß haben 🏋️‍♀️</label><br>
+        <label><input type="radio" name="q4" value="e"> e) Es funktioniert nur gut, wenn alle zusammenarbeiten 🛍️</label><br>
+        <label><input type="radio" name="q4" value="f"> f) Klare Absprache für Termine, Aufgaben und Verantwortlichkeiten 🏦</label><br>
+        <label><input type="radio" name="q4" value="g"> g) Events können nur gemeinsam erfolgreich umgesetzt werden 🎉</label>
 
 <hr class="divider">
 
         <h3>5. Wenn du dich mit deinen Freunden triffst, was ist dir am wichtigsten?</h3>
         <br>
-        <label><input type="radio" name="q5" value="a" required> a) Alles ist genau geplant und abgesprochen.</label><br>
-        <label><input type="radio" name="q5" value="b"> b) alles klar und fest planen.</label><br>
-        <label><input type="radio" name="q5" value="c"> c) Ort und Zeitpunkt, sowie Transporte stimmen perfekt.</label><br>
-        <label><input type="radio" name="q5" value="d"> d) Alle sind motiviert und machen mit.</label><br>
-        <label><input type="radio" name="q5" value="e"> e) Alles gut durchgeplant mit einem zuverlässigen und freundlichen Umgang.</label><br>
-        <label><input type="radio" name="q5" value="f"> f) Freizeit als Stressabbau nutzen und mit Freunden quatschen.</label><br>
-        <label><input type="radio" name="q5" value="g"> g) Kontaktknüpfung mit neuen Leuten.</label>
+        <label><input type="radio" name="q5" value="a" required> a) Alles ist genau geplant und abgesprochen 🗂️</label><br>
+        <label><input type="radio" name="q5" value="b"> b) Alles klar und fest planen 🏭</label><br>
+        <label><input type="radio" name="q5" value="c"> c) Ort und Zeitpunkt, sowie Transporte stimmen perfekt 🚚</label><br>
+        <label><input type="radio" name="q5" value="d"> d) Alle sind motiviert und machen mit 🏋️‍♀️</label><br>
+        <label><input type="radio" name="q5" value="e"> e) Alles gut durchgeplant mit einem zuverlässigen und freundlichen Umgang 🛍️</label><br>
+        <label><input type="radio" name="q5" value="f"> f) Freizeit als Stressabbau nutzen und mit Freunden quatschen 🏦</label><br>
+        <label><input type="radio" name="q5" value="g"> g) Kontaktknüpfung mit neuen Leuten 🎉</label>
 
 <hr class="divider">
 
         <h3>6. Was trifft auf dich am ehesten zu?</h3>
         <br>
-        <label><input type="radio" name="q6" value="a" required> a) Ich bin ein Organisations-Talent.</label><br>
-        <label><input type="radio" name="q6" value="b"> b) Ich bin mathematisch begabt und organisiert.</label><br>
-        <label><input type="radio" name="q6" value="c"> c) Ich kann gut planen und verhandeln.</label><br>
-        <label><input type="radio" name="q6" value="d"> d) Ich bin sportlich und motiviere andere gerne.</label><br>
-        <label><input type="radio" name="q6" value="e"> e) Ich bin teamfähig, flexibel und belastbar.</label><br>
-        <label><input type="radio" name="q6" value="f"> f) Ich bin diskret und vertrauenswürdig.</label><br>
-        <label><input type="radio" name="q6" value="g"> g) Ich bringe kreative Lösungen, bin flexibel und kann gut organisieren.</label>
+        <label><input type="radio" name="q6" value="a" required> a) Ich bin ein Organisations-Talent 🗂️</label><br>
+        <label><input type="radio" name="q6" value="b"> b) Ich bin mathematisch begabt und organisiert 🏭</label><br>
+        <label><input type="radio" name="q6" value="c"> c) Ich kann gut planen und verhandeln 🚚</label><br>
+        <label><input type="radio" name="q6" value="d"> d) Ich bin sportlich und motiviere andere gerne 🏋️‍♀️</label><br>
+        <label><input type="radio" name="q6" value="e"> e) Ich bin teamfähig, flexibel und belastbar 🛍️</label><br>
+        <label><input type="radio" name="q6" value="f"> f) Ich bin diskret und vertrauenswürdig 🏦</label><br>
+        <label><input type="radio" name="q6" value="g"> g) Ich bringe kreative Lösungen, bin flexibel und kann gut organisieren 🎉</label>
 
 <hr class="divider">
 
         <h3>7. Was würdest du gerne in deiner Ausbildung lernen?</h3>
         <br>
-        <label><input type="radio" name="q7" value="a" required> a) Büroarbeit, Rechnungen, Organisation.</label><br>
-        <label><input type="radio" name="q7" value="b"> b) Das Planen, Organisieren, Rechnen und das Herz des Unternehmens werden.</label><br>
-        <label><input type="radio" name="q7" value="c"> c) wie Waren weltweit transportiert werden.</label><br>
-        <label><input type="radio" name="q7" value="d"> d) Trainingspläne und Kundenberatung im Sport.</label><br>
-        <label><input type="radio" name="q7" value="e"> e) kaufmännisches Wissen, Verkauf und Beratung.</label><br>
-        <label><input type="radio" name="q7" value="f"> f) Bankprodukte, Dienstleistungen, Beratung und Verkauf.</label><br>
-        <label><input type="radio" name="q7" value="g"> g) Event- und Organisationsplanung, Projektmanagement, Kundenservice.</label>
+        <label><input type="radio" name="q7" value="a" required> a) Büroarbeit, Rechnungen, Organisation 🗂️</label><br>
+        <label><input type="radio" name="q7" value="b"> b) Das Planen, Organisieren, Rechnen und das Herz des Unternehmens werden 🏭</label><br>
+        <label><input type="radio" name="q7" value="c"> c) Wie Waren weltweit transportiert werden 🚚</label><br>
+        <label><input type="radio" name="q7" value="d"> d) Trainingspläne und Kundenberatung im Sport 🏋️‍♀️</label><br>
+        <label><input type="radio" name="q7" value="e"> e) Kaufmännisches Wissen, Verkauf und Beratung 🛍️</label><br>
+        <label><input type="radio" name="q7" value="f"> f) Bankprodukte, Dienstleistungen, Beratung und Verkauf 🏦</label><br>
+        <label><input type="radio" name="q7" value="g"> g) Event- und Organisationsplanung, Projektmanagement, Kundenservice 🎉</label>
 
 <hr class="divider">
 
         <h3>8. Welche Art von Erfolg macht dich am glücklichsten?</h3>
         <br>
-        <label><input type="radio" name="q8" value="a" required> a) wenn alles sauber sortiert und fertig ist.</label><br>
-        <label><input type="radio" name="q8" value="b"> b) wenn man gut Geld verdient.</label><br>
-        <label><input type="radio" name="q8" value="c"> c) wenn alles pünktlich ankommt und klappt.</label><br>
-        <label><input type="radio" name="q8" value="d"> d) wenn jemand durch dich fitter und gesünder wird.</label><br>
-        <label><input type="radio" name="q8" value="e"> e) wenn die Kunden zufrieden sind.</label><br>
-        <label><input type="radio" name="q8" value="f"> f) wenn alles Fehlerfrei abläuft.</label><br>
-        <label><input type="radio" name="q8" value="g"> g) wenn meine Gäste zufrieden sind.</label>
+        <label><input type="radio" name="q8" value="a" required> a) Wenn alles sauber sortiert und fertig ist 🗂️</label><br>
+        <label><input type="radio" name="q8" value="b"> b) Wenn man gut Geld verdient 🏭</label><br>
+        <label><input type="radio" name="q8" value="c"> c) Wenn alles pünktlich ankommt und klappt 🚚</label><br>
+        <label><input type="radio" name="q8" value="d"> d) Wenn jemand durch dich fitter und gesünder wird 🏋️‍♀️</label><br>
+        <label><input type="radio" name="q8" value="e"> e) Wenn die Kunden zufrieden sind 🛍️</label><br>
+        <label><input type="radio" name="q8" value="f"> f) Wenn alles fehlerfrei abläuft 🏦</label><br>
+        <label><input type="radio" name="q8" value="g"> g) Wenn meine Gäste zufrieden sind 🎉</label>
 
 <hr class="divider">
 
         <h3>9. Welches Motto passt am besten zu dir?</h3>
         <br>
-        <label><input type="radio" name="q9" value="a" required> a) Ordnung ist das halbe Leben!</label><br>
-        <label><input type="radio" name="q9" value="b"> b) Kauf dir deine Karriere!</label><br>
-        <label><input type="radio" name="q9" value="c"> c) Ohne Logistik läuft nichts!</label><br>
-        <label><input type="radio" name="q9" value="d"> d) Bewegung macht glücklich!</label><br>
-        <label><input type="radio" name="q9" value="e"> e) Mit Freude verkaufen, mit Herz beraten!.</label><br>
-        <label><input type="radio" name="q9" value="f"> f) Zahlen verstehen, Kunden begleiten, Sicherheit geben!</label><br>
-        <label><input type="radio" name="q9" value="g"> g) Ideen leben, Momente schaffen, Menschen begeistern!</label>
+        <label><input type="radio" name="q9" value="a" required> a) Ordnung ist das halbe Leben! 🗂️</label><br>
+        <label><input type="radio" name="q9" value="b"> b) Kauf dir deine Karriere! 🏭</label><br>
+        <label><input type="radio" name="q9" value="c"> c) Ohne Logistik läuft nichts! 🚚</label><br>
+        <label><input type="radio" name="q9" value="d"> d) Bewegung macht glücklich! 🏋️‍♀️</label><br>
+        <label><input type="radio" name="q9" value="e"> e) Mit Freude verkaufen, mit Herz beraten! 🛍️</label><br>
+        <label><input type="radio" name="q9" value="f"> f) Zahlen verstehen, Kunden begleiten, Sicherheit geben! 🏦</label><br>
+        <label><input type="radio" name="q9" value="g"> g) Ideen leben, Momente schaffen, Menschen begeistern! 🎉</label>
       </fieldset>
 
       <button type="submit" class="btn">🎯 Auswerten</button>
