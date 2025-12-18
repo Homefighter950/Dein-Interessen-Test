@@ -51,12 +51,4 @@ form.addEventListener("submit", async (e) => {
     <p>Am besten passt zu dir: <strong>${beruf}</strong> ${icons[winner]} ⭐</p>
     ${summary}
   `;
-
-  // Payload für Server
-  const payload = {
-    vorname: data.get("vorname"),
-    nachname: data.get("nachname"),
-    klasse: data.get("klasse"),
-    ergebnis: beruf
-  };
 })
