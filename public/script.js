@@ -1,22 +1,5 @@
 const form = document.getElementById("quizForm");
 const resultDiv = document.getElementById("result");
-const themeToggle = document.getElementById("theme-toggle");
-
-// Funktion zum Setzen des Themes
-const setTheme = (isBlue) => {
-  document.body.classList.toggle("blue-theme", isBlue);
-  themeToggle.checked = isBlue;
-  localStorage.setItem("theme", isBlue ? "blue" : "default");
-};
-
-// Event-Listener für den Schalter
-themeToggle.addEventListener("change", () => {
-  setTheme(themeToggle.checked);
-});
-
-// Theme beim Laden der Seite wiederherstellen
-const savedTheme = localStorage.getItem("theme");
-setTheme(savedTheme === "blue");
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
