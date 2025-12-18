@@ -59,20 +59,4 @@ form.addEventListener("submit", async (e) => {
     klasse: data.get("klasse"),
     ergebnis: beruf
   };
-
-  // POST an Server (optional)
-  fetch("/submit", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload)
-  })
-    .then(async res => {
-      if (!res.ok) {
-        const text = await res.text();
-        console.error("Fehler beim Speichern:", text);
-      } else {
-        console.log("Daten erfolgreich gespeichert!");
-      }
-    })
-    .catch(err => console.warn("Fetch-Error (lokal ignorierbar):", err));
-});
+})
